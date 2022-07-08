@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, ReplaySubject, take } from 'rxjs';
+import { Observable, ReplaySubject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { User } from '../models/identity/User';
 import { UserUpdate } from '../models/identity/UserUpdate';
+import { map, take } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -79,8 +80,5 @@ export class AccountService {
       .pipe(take(1));
   }
 
-}
-function map(arg0: (response: User) => void): any {
-  throw new Error('Function not implemented.');
 }
 

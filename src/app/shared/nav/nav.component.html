@@ -1,5 +1,4 @@
-<div>
-<nav class="navbar navbar-expand-lg navbar-light bg-white shadow" *ngIf="showMenu()">
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow">
   <div class="container">
     <a class="navbar-brand" routerLink="home">
       <i class="fa fa-users mb-2"></i>
@@ -10,18 +9,13 @@
     </button>
     <div class="collapse navbar-collapse" [collapse]="isCollapsed" [isAnimated]="true" id="navbarNav">
       <ul class="navbar-nav mr-auto">
-        <li>
-          <img class="bi bi-arrow-clockwise mt-1" routerLink="home" aria-current="page" style="cursor: pointer;"
-              viewBox="0 0 16 16" width="37" height="37" src="../../../../assets/IconProgramSpace.png" alt="">
-        </li>
         <li class="nav-item " routerLinkActive="active">
-          <a class="nav-link " aria-current="page" routerLink="home"> Program
-            Space</a>
+          <a class="nav-link " aria-current="page" routerLink="home">Home</a>
         </li>
         <ng-container *ngIf="(accountService.currentUser$ | async) !== null">
 
           <li class="nav-item " routerLinkActive="active">
-            <a class="nav-link" aria-current="page" routerLink="posts/lista">Publicações</a>
+            <a class="nav-link" aria-current="page" routerLink="cursos/lista">Cursos</a>
           </li>
           <!-- <li class="nav-item" routerLinkActive="active">
             <a class="nav-link" routerLink="contatos" style="">Contatos</a>
@@ -53,4 +47,3 @@
     </div>
   </div>
 </nav>
-</div>

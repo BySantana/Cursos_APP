@@ -1,3 +1,4 @@
+import { PerfilComponent } from './components/user/perfil/perfil.component';
 import { Curso_listaComponent } from './components/cursos/curso_lista/curso_lista.component';
 import { CursosComponent } from './components/cursos/cursos.component';
 import { NgModule } from '@angular/core';
@@ -16,10 +17,10 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       { path: 'user', redirectTo: 'user/perfil' },
-      // {
-      //   path: 'user/perfil',
-      //   component: PerfilComponent,
-      // },
+      {
+        path: 'user/perfil',
+        component: PerfilComponent,
+      },
       { path: 'cursos', redirectTo: 'cursos/lista' },
       {
         path: 'cursos',
@@ -27,7 +28,7 @@ const routes: Routes = [
         children: [
           // { path: 'post/:id', component: PostDetalheComponent },
           // { path: 'detalhe', component: PostDetalheComponent },
-          { path: 'lista', component: Curso_listaComponent },
+          { path: 'lista', component: Curso_listaComponent }
         ],
       },
       // { path: 'dashboard', component: DashboardComponent },

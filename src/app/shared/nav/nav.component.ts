@@ -24,8 +24,5 @@ export class NavComponent implements OnInit {
     location.reload();
   }
 
-  showMenu(): boolean {
-    return this.router.url !== '/user/login';
-  }
 
 }
