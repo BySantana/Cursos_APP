@@ -1,8 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { NovoCursoComponent } from './NovoCurso/NovoCurso.component';
+import { Component, OnInit, TemplateRef } from '@angular/core';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { Curso } from 'src/app/models/Curso';
 import { CursoService } from 'src/app/services/curso.service';
+
 
 @Component({
   selector: 'app-cursos',
@@ -11,12 +15,14 @@ import { CursoService } from 'src/app/services/curso.service';
 })
 export class CursosComponent implements OnInit {
 
+  modalRef?: BsModalRef;
   cursos: any;
   cursosFiltrados: any;
 
   constructor(private cursoService: CursoService,
               private spinner: NgxSpinnerService,
-              private toastr: ToastrService) { }
+              private toastr: ToastrService,
+              public dialog: MatDialog) { }
 
   ngOnInit() {
     this.getAllCursos()
@@ -36,5 +42,17 @@ export class CursosComponent implements OnInit {
       }
     ).add(() => this.spinner.hide());
   }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(NovoCursoComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
+  
+
+
 
 }

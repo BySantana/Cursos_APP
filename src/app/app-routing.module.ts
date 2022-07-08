@@ -1,5 +1,7 @@
+
+import { NovoCursoComponent } from './components/cursos/NovoCurso/NovoCurso.component';
 import { PerfilComponent } from './components/user/perfil/perfil.component';
-import { Curso_listaComponent } from './components/cursos/curso_lista/curso_lista.component';
+
 import { CursosComponent } from './components/cursos/cursos.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -21,14 +23,13 @@ const routes: Routes = [
         path: 'user/perfil',
         component: PerfilComponent,
       },
-      { path: 'cursos', redirectTo: 'cursos/lista' },
+      { path: 'cursos', redirectTo: 'cursos' },
       {
         path: 'cursos',
         component: CursosComponent,
         children: [
           // { path: 'post/:id', component: PostDetalheComponent },
-          // { path: 'detalhe', component: PostDetalheComponent },
-          { path: 'lista', component: Curso_listaComponent }
+          { path: 'novoCurso', component: NovoCursoComponent },
         ],
       },
       // { path: 'dashboard', component: DashboardComponent },

@@ -1,0 +1,54 @@
+<h1 mat-dialog-title>Novo Curso</h1>
+<div mat-dialog-content>
+  <form [formGroup]="form" (submit)="onSubmit()">
+    <mat-form-field appearance="outline" class="example-form" class="col-sm-12">
+      <mat-label>Titulo</mat-label>
+      <input formControlName="cursoNome" matInput placeholder="Titulo">
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="example-form " class="col-sm-12" >
+      <mat-label>Descrição</mat-label>
+      <input formControlName="descricao" matInput placeholder="Descrição">
+    </mat-form-field>
+    <div class="row">
+      <mat-form-field appearance="outline" class="col-sm-6">
+        <mat-label>Data de Início</mat-label>
+        <input formControlName="dataInicio" matInput [matDatepicker]="picker" placeholder="dd/mm/yyyy">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="col-sm-6">
+        <mat-label>Data de término</mat-label>
+        <input formControlName="dataTermino" matInput [matDatepicker]="picker2">
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <mat-form-field appearance="outline" class="example-form" class="col-sm-12">
+      <mat-label>N° de Alunos</mat-label>
+      <input formControlName="qtdAlunos" matInput placeholder="N° Alunos">
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="example-form" class="col-sm-12">
+      <mat-label>Categoria</mat-label>
+      <mat-select formControlName="categoriaId" placeholder="Categoria">
+        <mat-option value="1">Multiplataforma</mat-option>
+        <mat-option value="2">Banco de dados</mat-option>
+        <mat-option value="3">Metodologia</mat-option>
+        <mat-option value="4">Comportamento</mat-option>
+        <mat-option value="5">Comunicação</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div>
+      <button (click)="resetForm($event)" class="btn btn-outline-secondary mr-auto border">
+        Limpar
+      </button>
+      <button [disabled]="!form.valid" class="btn btn-primary" type="submit">
+        Criar
+      </button>
+    </div>
+  </form>
+</div>
+
+
+<div align="end" mat-dialog-actions>
+  <button mat-button mat-dialog-close>Voltar</button>
+</div>
