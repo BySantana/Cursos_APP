@@ -22,4 +22,8 @@ export class CursoService {
   put(curso: Curso, id: number){
     return this.httpClient.put(this.baseUrl+'put/'+id, curso);
   }
+
+  delete(id: number){
+    return this.httpClient.delete(this.baseUrl+'delete/'+id)
+  }
 }

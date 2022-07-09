@@ -28,9 +28,9 @@ export class CursosComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(private cursoService: CursoService,
-              private spinner: NgxSpinnerService,
-              private toastr: ToastrService,
-              public dialog: MatDialog) { }
+    private spinner: NgxSpinnerService,
+    private toastr: ToastrService,
+    public dialog: MatDialog) { }
 
   ngOnInit() {
     this.getAllCursos()
@@ -43,47 +43,77 @@ export class CursosComponent implements OnInit {
     }, 2);
   }
 
-  getAllCursos(){
+  getAllCursos() {
     // this.spinner.show();
     this.cursoService.getAll().subscribe(
-      (response: any) => { 
+      (response: any) => {
         this.dataSource = new MatTableDataSource(response);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
-        this.toastr.info('Cursos carregados', 'Sucesso') 
-        
+        this.toastr.info('Cursos carregados', 'Sucesso')
+
       },
-      (error) => { 
+      (error) => {
         console.log(error);
         this.toastr.error('Erro ao carregar cursos', 'Erro');
       }
-     )
-     setTimeout(() => {
+    )
+    setTimeout(() => {
       /** spinner ends after 5 seconds */
       this.spinner.hide();
-    }, 2000); 
+    }, 2000);
   }
 
   openDialog() {
     this.dialog.open(NovoCursoComponent, {
       width: '50%'
     }).afterClosed().subscribe(val => {
-      if(val === 'Criar'){
+      if (val === 'Criar') {
         this.getAllCursos();
       }
     });
   }
 
-  editarCurso(row: any){
-    this.dialog.open(NovoCursoComponent,{
+  editarCurso(row: any) {
+    this.dialog.open(NovoCursoComponent, {
       width: '50%',
       data: row
     }).afterClosed().subscribe(val => {
-      if(val === 'Atualizar'){
+      if (val === 'Atualizar') {
         this.getAllCursos();
       }
     });
-    
+
+  }
+
+  // updateCurso() {
+  //   this.cursoService.put(this.form.value, this.editData.cursoId)
+  //   .subscribe(
+  //     () => {
+  //       this.toastr.success('Curso atualizado', 'Sucesso');
+  //       this.form.reset();
+  //       this.dialogRef.close('Atualizar');
+  //     },
+  //     (error) => {
+  //       this.toastr.error(error.error);
+  //       console.error(error);
+  //     }
+  //   ).add(() => this.spinner.hide());
+  // }
+
+  excluirCurso(id: number) {
+    this.spinner.show();
+    this.cursoService.delete(id)
+      .subscribe(
+        () => {
+          this.toastr.success('Curso excluído', 'Sucesso');
+          this.getAllCursos();
+        },
+        (error) => {
+          this.toastr.error(error.error);
+          console.error(error);
+        }
+      ).add(() => this.spinner.hide());
   }
 
   applyFilter(event: Event) {

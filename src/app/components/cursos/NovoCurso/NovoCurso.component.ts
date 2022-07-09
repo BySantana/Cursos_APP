@@ -94,6 +94,7 @@ export class NovoCursoComponent implements OnInit {
   }
 
   updateCurso() {
+    this.spinner.show();
     this.cursoService.put(this.form.value, this.editData.cursoId)
     .subscribe(
       () => {
