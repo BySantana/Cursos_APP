@@ -34,22 +34,34 @@ export class CursosComponent implements OnInit {
 
   ngOnInit() {
     this.getAllCursos()
+
+    this.spinner.show();
+
+    setTimeout(() => {
+      /** spinner ends after 5 seconds */
+      this.spinner.hide();
+    }, 2);
   }
 
   getAllCursos(){
-    this.spinner.show();
+    // this.spinner.show();
     this.cursoService.getAll().subscribe(
       (response: any) => { 
         this.dataSource = new MatTableDataSource(response);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
-        this.toastr.info('Cursos carregados', 'Sucesso')  
+        this.toastr.info('Cursos carregados', 'Sucesso') 
+        
       },
       (error) => { 
         console.log(error);
         this.toastr.error('Erro ao carregar cursos', 'Erro');
       }
-    ).add(() => this.spinner.hide());
+     )
+     setTimeout(() => {
+      /** spinner ends after 5 seconds */
+      this.spinner.hide();
+    }, 2000); 
   }
 
   openDialog() {
@@ -60,6 +72,18 @@ export class CursosComponent implements OnInit {
         this.getAllCursos();
       }
     });
+  }
+
+  editarCurso(row: any){
+    this.dialog.open(NovoCursoComponent,{
+      width: '50%',
+      data: row
+    }).afterClosed().subscribe(val => {
+      if(val === 'Atualizar'){
+        this.getAllCursos();
+      }
+    });
+    
   }
 
   applyFilter(event: Event) {

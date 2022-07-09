@@ -18,4 +18,8 @@ export class CursoService {
   post(curso: Curso){
     return this.httpClient.post(this.baseUrl, curso);
   }
+
+  put(curso: Curso, id: number){
+    return this.httpClient.put(this.baseUrl+'put/'+id, curso);
+  }
 }
