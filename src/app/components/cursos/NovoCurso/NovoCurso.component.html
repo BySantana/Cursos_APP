@@ -37,11 +37,11 @@
         <mat-option value="5">Comunicação</mat-option>
       </mat-select>
     </mat-form-field>
-    <div>
-      <button (click)="resetForm($event)" class="btn btn-outline-secondary mr-auto border">
+    <div align="center" class="mb-3">
+      <button mat-raised-button color="warn" (click)="resetForm($event)" class="mr-auto border" style="background-color: black;">
         Limpar
       </button>
-      <button [disabled]="!form.valid" class="btn btn-primary" type="submit">
+      <button mat-raised-button color="primary" [disabled]="!form.valid" class="ms-1" type="submit">
         Criar
       </button>
     </div>

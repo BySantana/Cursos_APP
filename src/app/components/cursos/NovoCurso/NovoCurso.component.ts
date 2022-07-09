@@ -5,6 +5,7 @@ import { Curso } from 'src/app/models/Curso';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControlOptions, FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
+import { MatDialogRef } from '@angular/material/dialog';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -22,12 +23,12 @@ export class NovoCursoComponent implements OnInit {
 
   form: FormGroup;
   novoCurso: Curso;
-  matcher = new MyErrorStateMatcher();
 
   constructor(private fb: FormBuilder,
     private cursoService: CursoService,
     private spinner: NgxSpinnerService,
-    private toastr: ToastrService) { }
+    private toastr: ToastrService,
+    private dialogRef: MatDialogRef<NovoCursoComponent>) { }
 
   ngOnInit() {
     this.validation();
@@ -61,7 +62,10 @@ export class NovoCursoComponent implements OnInit {
       this.cursoService
         .post(this.novoCurso)
         .subscribe(
-          () => { this.toastr.success('Curso criado', 'Sucesso') },
+          () => { this.toastr.success('Curso criado', 'Sucesso');
+                  this.form.reset();
+                  this.dialogRef.close('Criar');
+                },
           (error) => {
             this.toastr.error(error.error);
             console.error(error);
