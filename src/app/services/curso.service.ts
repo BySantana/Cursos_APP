@@ -26,4 +26,12 @@ export class CursoService {
   delete(id: number){
     return this.httpClient.delete(this.baseUrl+'delete/'+id)
   }
+
+  getAllByDatas(dataInicio: string, dataTermino: string){
+    return this.httpClient.get(this.baseUrl+'cursos/'+dataInicio+'/'+dataTermino);
+  }
+
+  getAllByData(data: string){
+    return this.httpClient.get(this.baseUrl+`curso/${data}`);
+  }
 }

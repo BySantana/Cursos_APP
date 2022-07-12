@@ -1,3 +1,4 @@
+import { LogsComponent } from './components/Logs/Logs.component';
 
 import { NovoCursoComponent } from './components/cursos/NovoCurso/NovoCurso.component';
 import { PerfilComponent } from './components/user/perfil/perfil.component';
@@ -28,11 +29,10 @@ const routes: Routes = [
         path: 'cursos',
         component: CursosComponent,
         children: [
-          // { path: 'post/:id', component: PostDetalheComponent },
           { path: 'novoCurso', component: NovoCursoComponent },
         ],
       },
-      // { path: 'dashboard', component: DashboardComponent },
+      { path: 'logs', component: LogsComponent },
     ],
   },
   {
@@ -45,6 +45,7 @@ const routes: Routes = [
   },
   { path: 'home', component: HomeComponent },
   { path: '**', redirectTo: 'home', pathMatch: 'full' },
+  
 ];
 
 @NgModule({

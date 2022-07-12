@@ -3,7 +3,6 @@ import { User } from "./identity/User";
 
 export class Curso {
     cursoId: number;
-    cursoNome: string;
     descricao: string;
     dataInicio: Date;
     dataTermino: Date;

@@ -11,18 +11,19 @@ export class NavComponent implements OnInit {
 
   isCollapsed = true;
 
+
   constructor(
     public accountService: AccountService,
     private router: Router
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   logout(): void {
     this.accountService.logout();
     this.router.navigateByUrl('/user/login');
     location.reload();
   }
-
 
 }

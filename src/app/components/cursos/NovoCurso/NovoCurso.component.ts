@@ -38,7 +38,6 @@ export class NovoCursoComponent implements OnInit {
     console.log(this.editData);
     if (this.editData) {
       this.btnAcao = 'Atualizar';
-      this.form.controls['cursoNome'].setValue(this.editData.cursoNome);
       this.form.controls['descricao'].setValue(this.editData.descricao);
       this.form.controls['dataInicio'].setValue(this.editData.dataInicio);
       this.form.controls['dataTermino'].setValue(this.editData.dataTermino);
@@ -53,7 +52,6 @@ export class NovoCursoComponent implements OnInit {
 
     this.form = this.fb.group(
       {
-        cursoNome: ['', Validators.required],
         descricao: ['', Validators.required],
         dataInicio: ['', Validators.required],
         dataTermino: ['', Validators.required],
