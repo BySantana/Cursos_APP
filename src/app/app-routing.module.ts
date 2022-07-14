@@ -1,7 +1,8 @@
+import { ExcluirCursoComponent } from './components/cursos/ExcluirCurso/ExcluirCurso.component';
+import { CursoListaComponent } from './components/cursos/CursoLista/CursoLista.component';
 import { LogsComponent } from './components/Logs/Logs.component';
 
 import { NovoCursoComponent } from './components/cursos/NovoCurso/NovoCurso.component';
-import { PerfilComponent } from './components/user/perfil/perfil.component';
 
 import { CursosComponent } from './components/cursos/cursos.component';
 import { NgModule } from '@angular/core';
@@ -19,17 +20,14 @@ const routes: Routes = [
     runGuardsAndResolvers: 'always',
     canActivate: [AuthGuard],
     children: [
-      { path: 'user', redirectTo: 'user/perfil' },
-      {
-        path: 'user/perfil',
-        component: PerfilComponent,
-      },
-      { path: 'cursos', redirectTo: 'cursos' },
+      { path: 'cursos', redirectTo: 'cursos/lista' },
       {
         path: 'cursos',
         component: CursosComponent,
         children: [
+          { path: 'lista', component: CursoListaComponent },
           { path: 'novoCurso', component: NovoCursoComponent },
+          { path: 'excluirCurso', component: ExcluirCursoComponent }
         ],
       },
       { path: 'logs', component: LogsComponent },

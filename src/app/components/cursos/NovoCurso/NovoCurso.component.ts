@@ -3,16 +3,11 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { CursoService } from 'src/app/services/curso.service';
 import { Curso } from 'src/app/models/Curso';
 import { Component, Inject, OnInit } from '@angular/core';
-import { AbstractControlOptions, FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
-import { ErrorStateMatcher } from '@angular/material/core';
+import { AbstractControlOptions, FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
-export class MyErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    const isSubmitted = form && form.submitted;
-    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
-  }
-}
+
 
 @Component({
   selector: 'app-NovoCurso',
@@ -61,8 +56,6 @@ export class NovoCursoComponent implements OnInit {
       },
       formOptions
     );
-
-
   }
 
   public criarCurso() {
@@ -117,4 +110,6 @@ export class NovoCursoComponent implements OnInit {
     event.preventDefault();
     this.form.reset();
   }
+
+  
 }

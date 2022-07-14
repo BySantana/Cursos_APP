@@ -3,8 +3,6 @@ import { MatDialogModule } from '@angular/material/dialog';
 
 import { NovoCursoComponent } from './components/cursos/NovoCurso/NovoCurso.component';
 import { CursosComponent } from './components/cursos/cursos.component';
-import { TituloComponent } from './shared/titulo/titulo.component';
-import { PerfilComponent } from './components/user/perfil/perfil.component';
 import { HomeComponent } from './components/home/home.component';
 import { NavComponent } from './shared/nav/nav.component';
 import { RegistrationComponent } from './components/user/registration/registration.component';
@@ -35,7 +33,9 @@ import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
-import {MatIconModule} from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
+import { CursoListaComponent } from './components/cursos/CursoLista/CursoLista.component';
+import { ExcluirCursoComponent } from './components/cursos/ExcluirCurso/ExcluirCurso.component';
 
 
 
@@ -47,12 +47,13 @@ import {MatIconModule} from '@angular/material/icon';
     RegistrationComponent,
     HomeComponent,
     NavComponent,
-    PerfilComponent,
-    TituloComponent,
     CursosComponent,
     NovoCursoComponent,
-    LogsComponent
+    LogsComponent,
+    CursoListaComponent,
+    ExcluirCursoComponent
   ],
+
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -81,7 +82,7 @@ import {MatIconModule} from '@angular/material/icon';
     MatSelectModule,
     MatPaginatorModule,
     MatSortModule,
-    MatIconModule
+    MatIconModule,
   ],
 
 
