@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
   public login(): void {
     this.accountService.login(this.model).subscribe(
       () => {
-        this.router.navigateByUrl('home');
+        this.router.navigateByUrl('cursos');
       },
       (error: any) => {
         if (error.status == 401)

@@ -14,7 +14,7 @@ import { MatSort } from '@angular/material/sort';
 export class LogsComponent implements OnInit {
 
   logs: any;
-  displayedColumns: string[] = ['curso', 'dataInclusao', 'dataAtualizacao', 'user']
+  displayedColumns: string[] = ['curso', 'dataInclusao', 'dataAtualizacao', 'user', 'status']
   dataSource: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
